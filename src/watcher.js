@@ -51,6 +51,7 @@ function requireFormatter(formatterPath) {
 }
 
 function getFormatter(cli, formatter) {
+  formatter = formatter || '';
   const pathToFormatterSpecified = formatter.includes('\\');
   const isSimpleFormatter = formatter.includes('simple');
   const formatterPath = formatter.replace(/\\/g, '/');
