@@ -58,7 +58,7 @@ typings/
 .env
 
 # build
-build/**
+# build/**
 
 # diff tool
 *.orig
