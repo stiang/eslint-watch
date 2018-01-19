@@ -32,24 +32,24 @@ function getPath(options) {
 };
 
 export default {
-  parse: function argParser(cliArgs, options) {
-    let arr = [];
-    let dirs = options._;
+  parse(cliArgs, options) {
+    const dirs = options._;
     let formatSpecified = false;
-    let args = _.slice(cliArgs, 2, cliArgs.length);
+    const args = _.slice(cliArgs, 2, cliArgs.length);
     logger.debug('Directories to check: %o', dirs);
     logger.debug('Args %o', args);
-    _.each(args, function (item) {
+    const arr = _.without(_.map(args, (item) => {
       if (!keys[item] && !formats[item]) {
         logger.debug('Pushing item: %s', item);
-        arr.push(item);
+        return item;
       }
       if (formats[item]) {
         formatSpecified = true;
         logger.debug('Format specified');
-        arr.push(getPath(options));
+        return getPath(options);
       }
-    });
+    }), undefined);
+
     if (options.format === simpleDetail && !formatSpecified) {
       logger.debug('setting custom formatter');
       arr.push(formatKey);
