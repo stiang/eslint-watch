@@ -24,7 +24,7 @@ const myOptions = [{
   option: 'format',
   alias: 'f',
   type: 'String',
-  default: 'simple-detail',
+  // default: 'simple-detail',
   description: 'Use a specific output format'
 }, {
   option: 'watch',
